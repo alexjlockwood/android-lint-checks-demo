@@ -1,4 +1,4 @@
-package com.lyft.android.lint.sample
+package com.lyft.android.lint.app
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
