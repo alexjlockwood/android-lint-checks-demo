@@ -28,5 +28,6 @@ dependencies {
 
 * [KotlinConf 2017 - Kotlin Static Analysis with Android Lint](https://www.youtube.com/watch?v=p8yX5-lPS6o)
 * [Getting the Most Out of Android Lint (Android Dev Summit '18)](https://www.youtube.com/watch?v=ffH-LD5uP4s)
+* [Source code for the Android Studio lint checks](https://android.googlesource.com/platform/tools/base/+/mirror-goog-studio-master-dev/lint/libs/lint-checks/src/main/java/com/android/tools/lint/checks)
 * [Sample project with custom lint checks](https://github.com/googlesamples/android-custom-lint-rules)
 * [Lint mailing list](https://groups.google.com/forum/#!forum/lint-dev)
