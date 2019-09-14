@@ -1,0 +1,8 @@
+ext.versions = [
+
+        // Note that the lint version is always the gradle plugin version + 23.0.0
+        gradlePluginVersion: '3.5.0',
+        lint               : '26.5.0',
+        kotlin             : '1.3.50',
+
+]

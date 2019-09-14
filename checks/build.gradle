@@ -1,0 +1,17 @@
+apply plugin: 'kotlin'
+
+dependencies {
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+    compileOnly "com.android.tools.lint:lint-api:$versions.lint"
+    compileOnly "com.android.tools.lint:lint-checks:$versions.lint"
+
+    testImplementation "com.android.tools.lint:lint-tests:$versions.lint"
+    testImplementation "junit:junit:4.12"
+    testImplementation "org.assertj:assertj-core:3.9.0"
+}
+
+jar {
+    manifest {
+        attributes("Lint-Registry-v2": "com.lyft.android.lint.checks.IssueRegistry")
+    }
+}
