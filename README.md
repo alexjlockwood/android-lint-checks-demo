@@ -1,6 +1,30 @@
 # android-lint-checks-demo
 
-This is a simple demo project that shows how to configure lint in an Android project.
+This is a simple demo project that shows how to configure and write custom lint checks in an Android project.
+
+## Custom lint checks
+
+This project contains the below custom lint checks. You can see them show up as errors if you open this project in Android Studio and look at the [`MainActivity.kt`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/app/src/main/java/com/lyft/android/app/MainActivity.kt) and [`activity_main.xml`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/app/src/main/res/layout/activity_main.xml) files.
+
+### [`DeprecatedButtonLayoutXmlDetector`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/checks/src/main/java/com/lyft/android/lint/checks/DeprecatedButtonLayoutXmlDetector.kt)
+
+Prohibits usages of a hypothetical `DeprecatedButton` class in layout XML resource files. 
+
+### [`DeprecatedButtonJavaKotlinDetector`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/checks/src/main/java/com/lyft/android/lint/checks/DeprecatedButtonJavaKotlinDetector.kt)
+
+Prohibits instantiations of a hypothetical `DeprecatedButton` class in Java and Kotlin code.
+
+### [`DeprecatedRedResourceLayoutXmlDetector`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/checks/src/main/java/com/lyft/android/lint/checks/DeprecatedRedResourceLayoutXmlDetector.kt)
+
+Prohibits references to a hypothetical `@color/deprecated_red` resource in layout XML resource files.
+
+### [`DeprecatedRedResourceJavaKotlinDetector`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/checks/src/main/java/com/lyft/android/lint/checks/DeprecatedRedResourceJavaKotlinDetector.kt)
+
+Prohibits references to a hypothetical `R.color.deprecated_red` resource in Java and Kotlin code.
+
+### [`AndroidToastJavaKotlinDetector`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/checks/src/main/java/com/lyft/android/lint/checks/AndroidToastJavaKotlinDetector.kt)
+
+Prohibits usage of the Android `Toast` class in Java and Kotlin code and suggests using a `Snackbar` from the support library instead.
 
 ## Project setup
 
@@ -8,16 +32,11 @@ This project contains the following two modules:
 
 ### Lint check jar library (`checks/`)
 
-This is the lint check jar library that other modules consume. This module contains
-the custom lint check implementations, each of which are listed in the 
-[`IssueRegistry`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/checks/src/main/java/com/lyft/android/lint/checks/IssueRegistry.kt) class.
-Unit tests are written for each custom lint check implementation.
+This is the lint check jar library that other modules consume. This module contains the custom lint check implementations, each of which are listed in the [`IssueRegistry`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/checks/src/main/java/com/lyft/android/lint/checks/IssueRegistry.kt) class. Unit tests are written for each custom lint check implementation.
 
 ### Android app module (`app/`)
 
-This module contains a generic sample app. In order to get the custom lint checks
-running on the code in this module, we depend on the `checks` module above in the
-[`app/build.gradle`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/app/build.gradle#L29) file:
+This module contains a generic sample app. In order to get the custom lint checks running on the code in this module, we depend on the `checks` module above in the [`app/build.gradle`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/app/build.gradle#L29) file:
 
 ```
 dependencies {
