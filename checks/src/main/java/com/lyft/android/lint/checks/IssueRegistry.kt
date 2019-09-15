@@ -17,6 +17,9 @@ class IssueRegistry : IssueRegistry() {
 
     override val issues: List<Issue> = listOf(
         DeprecatedButtonConstructorDetector.ISSUE,
-        DeprecatedButtonLayoutXmlDetector.ISSUE
+        DeprecatedButtonLayoutXmlDetector.ISSUE,
+        DeprecatedRedColorLayoutXmlDetector.ISSUE,
+        DeprecatedRedColorResourceReferenceDetector.ISSUE,
+        ToastMethodCallDetector.ISSUE
     )
 }

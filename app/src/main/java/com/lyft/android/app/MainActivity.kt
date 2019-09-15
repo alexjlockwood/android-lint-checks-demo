@@ -1,10 +1,10 @@
 package com.lyft.android.app
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.lyft.android.ui.DeprecatedButton
 
 @Suppress("unused")
@@ -19,5 +19,17 @@ class MainActivity : AppCompatActivity() {
         // Creating new instances of DeprecatedButton is prohibited by the
         // `DeprecatedButtonConstructorDetector` custom lint check.
         return DeprecatedButton(this)
+    }
+
+    private fun showToast() {
+        // Usages of the Android Toast class is prohibited by the
+        // `ToastMethodCallDetector` custom lint check.
+        Toast.makeText(this, "Some random test", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun getRedColor(): Int {
+        // References to the `R.color.deprecated_red` resource are prohibited by the
+        // `DeprecatedRedColorResourceReferenceDetector` custom lint check.
+        return ContextCompat.getColor(this, R.color.deprecated_red)
     }
 }
