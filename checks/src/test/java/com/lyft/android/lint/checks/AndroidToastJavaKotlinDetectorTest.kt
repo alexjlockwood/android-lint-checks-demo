@@ -7,14 +7,14 @@ import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
 /**
- * Tests for the [ToastMethodCallDetector] custom lint check.
+ * Tests for the [AndroidToastJavaKotlinDetector] custom lint check.
  */
 @RunWith(JUnit4::class)
-class ToastMethodCallDetectorTest : LintDetectorTest() {
+class AndroidToastJavaKotlinDetectorTest : LintDetectorTest() {
 
-    override fun getIssues() = mutableListOf(ToastMethodCallDetector.ISSUE)
+    override fun getIssues() = mutableListOf(AndroidToastJavaKotlinDetector.ISSUE)
 
-    override fun getDetector(): Detector = ToastMethodCallDetector()
+    override fun getDetector(): Detector = AndroidToastJavaKotlinDetector()
 
     @Test
     fun testJava_expectPass() {
@@ -36,7 +36,7 @@ public class TestClass {
     }
 
     @Test
-    fun java_expectFail() {
+    fun testJava_expectFail() {
         lint()
             .files(
                 java(
@@ -58,7 +58,7 @@ public class TestClass {
             .run()
             .expect(
                 """
-src/com/lyft/android/lint/checks/TestClass.java:10: Error: Use a Snackbar from the support library instead. [ToastMethodCall]
+src/com/lyft/android/lint/checks/TestClass.java:10: Error: Use a Snackbar from the support library instead. [AndroidToastJavaKotlin]
         Toast.makeText(context, "Some text", Toast.LENGTH_SHORT).show();
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 1 errors, 0 warnings
@@ -108,7 +108,7 @@ class TestClass {
             .run()
             .expect(
                 """
-src/com/lyft/android/lint/checks/TestClass.kt:10: Error: Use a Snackbar from the support library instead. [ToastMethodCall]
+src/com/lyft/android/lint/checks/TestClass.kt:10: Error: Use a Snackbar from the support library instead. [AndroidToastJavaKotlin]
         Toast.makeText(context, "Some text", Toast.LENGTH_SHORT).show()
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 1 errors, 0 warnings

@@ -8,15 +8,15 @@ import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
 /**
- * Tests for the [DeprecatedButtonConstructorDetector] custom lint check.
+ * Tests for the [DeprecatedButtonJavaKotlinDetector] custom lint check.
  */
 @RunWith(JUnit4::class)
-class DeprecatedButtonConstructorDetectorTest : LintDetectorTest() {
+class DeprecatedButtonJavaKotlinDetectorTest : LintDetectorTest() {
 
     override fun getIssues(): MutableList<Issue> =
-        mutableListOf(DeprecatedButtonConstructorDetector.ISSUE)
+        mutableListOf(DeprecatedButtonJavaKotlinDetector.ISSUE)
 
-    override fun getDetector(): Detector = DeprecatedButtonConstructorDetector()
+    override fun getDetector(): Detector = DeprecatedButtonJavaKotlinDetector()
 
     @Test
     fun testJava_expectPass() {
@@ -69,7 +69,7 @@ public class TestClass {
             .run()
             .expect(
                 """
-src/com/lyft/android/lint/checks/TestClass.java:10: Error: Use a PrettyButton instead. [DeprecatedButtonConstructor]
+src/com/lyft/android/lint/checks/TestClass.java:10: Error: Use a PrettyButton instead. [DeprecatedButtonJavaKotlin]
         DeprecatedButton deprecatedButton = new DeprecatedButton(context);
                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 1 errors, 0 warnings
@@ -122,7 +122,7 @@ fun test(context: Context) {
             .run()
             .expect(
                 """
-src/com/lyft/android/lint/checks/test.kt:8: Error: Use a PrettyButton instead. [DeprecatedButtonConstructor]
+src/com/lyft/android/lint/checks/test.kt:8: Error: Use a PrettyButton instead. [DeprecatedButtonJavaKotlin]
     val deprecatedButton = DeprecatedButton(context)
                            ~~~~~~~~~~~~~~~~~~~~~~~~~
 1 errors, 0 warnings

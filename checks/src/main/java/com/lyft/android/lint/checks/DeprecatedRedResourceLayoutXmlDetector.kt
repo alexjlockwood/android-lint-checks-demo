@@ -9,17 +9,17 @@ import org.w3c.dom.Attr
 /**
  * A custom lint check that prohibits usages of the `@color/deprecated_red` in layout XML files.
  */
-class DeprecatedRedColorLayoutXmlDetector : ResourceXmlDetector() {
+class DeprecatedRedResourceLayoutXmlDetector : ResourceXmlDetector() {
 
     companion object {
         val ISSUE = Issue.create(
-            id = "DeprecatedRedColorLayoutXml",
+            id = "DeprecatedRedResourceLayoutXml",
             briefDescription = "Prohibits usages of the `deprecated_red` color resource in layout XML",
             explanation = "The `deprecated_red` color resource is deprecated and should no longer be used",
             category = Category.CORRECTNESS,
             severity = Severity.ERROR,
             implementation = Implementation(
-                DeprecatedRedColorLayoutXmlDetector::class.java,
+                DeprecatedRedResourceLayoutXmlDetector::class.java,
                 Scope.RESOURCE_FILE_SCOPE
             )
         )

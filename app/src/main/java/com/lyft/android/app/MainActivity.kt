@@ -17,19 +17,19 @@ class MainActivity : AppCompatActivity() {
 
     private fun createButton(): Button {
         // Creating new instances of DeprecatedButton is prohibited by the
-        // `DeprecatedButtonConstructorDetector` custom lint check.
+        // `DeprecatedButtonJavaKotlinDetector` custom lint check.
         return DeprecatedButton(this)
     }
 
     private fun showToast() {
         // Usages of the Android Toast class is prohibited by the
-        // `ToastMethodCallDetector` custom lint check.
+        // `AndroidToastJavaKotlinDetector` custom lint check.
         Toast.makeText(this, "Some random test", Toast.LENGTH_SHORT).show()
     }
 
     private fun getRedColor(): Int {
         // References to the `R.color.deprecated_red` resource are prohibited by the
-        // `DeprecatedRedColorResourceReferenceDetector` custom lint check.
+        // `DeprecatedRedResourceJavaKotlin` custom lint check.
         return ContextCompat.getColor(this, R.color.deprecated_red)
     }
 }

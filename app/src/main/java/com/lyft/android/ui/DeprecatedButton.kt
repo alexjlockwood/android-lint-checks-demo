@@ -10,7 +10,7 @@ import androidx.appcompat.widget.AppCompatButton
  * A `DeprecatedButtonLayoutXmlDetector` custom lint check has been written to prohibit new
  * usages of this button class in layout XML.
  *
- * A `DeprecatedButtonConstructorDetector` has also been written to prohibit new
+ * A `DeprecatedButtonJavaKotlinDetector` has also been written to prohibit new
  * instances of this class from being instantiated programatically.
  */
 class DeprecatedButton @JvmOverloads constructor(

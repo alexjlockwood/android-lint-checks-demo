@@ -5,19 +5,20 @@ import com.intellij.psi.PsiMethod
 import org.jetbrains.uast.UCallExpression
 
 /**
- * A custom lint check that prohibits usage of the `android.widget.Toast` class.
+ * A custom lint check that prohibits usage of the `android.widget.Toast` class and suggests
+ * using a Snackbar from the support library instead.
  */
-class ToastMethodCallDetector : Detector(), Detector.UastScanner {
+class AndroidToastJavaKotlinDetector : Detector(), Detector.UastScanner {
 
     companion object {
         val ISSUE = Issue.create(
-            id = "ToastMethodCall",
+            id = "AndroidToastJavaKotlin",
             briefDescription = "Prohibits usages of `android.widget.Toast`",
             explanation = "Usages of `android.widget.Toast` are prohibited.",
             category = Category.CORRECTNESS,
             severity = Severity.ERROR,
             implementation = Implementation(
-                ToastMethodCallDetector::class.java,
+                AndroidToastJavaKotlinDetector::class.java,
                 Scope.JAVA_FILE_SCOPE
             )
         )
@@ -32,7 +33,7 @@ class ToastMethodCallDetector : Detector(), Detector.UastScanner {
 
     override fun visitMethodCall(context: JavaContext, node: UCallExpression, method: PsiMethod) {
         if (!context.evaluator.isMemberInClass(method, "android.widget.Toast")) {
-            // Ignore the method call if the method doesn't belong to
+            // Ignore the method call if it is named "makeText" but doesn't belong to
             // the `android.widget.Toast` class.
             return
         }
