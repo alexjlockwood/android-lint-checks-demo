@@ -1,4 +1,3 @@
 <resources>
     <string name="app_name">Android Lint Checks Demo</string>
-    <string name="sample_app_message">This is a sample app that shows how to setup custom lint checks in your project!</string>
 </resources>

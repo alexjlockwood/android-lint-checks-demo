@@ -7,12 +7,15 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
+/**
+ * Tests for the [DeprecatedButtonLayoutXmlDetector] custom lint check.
+ */
 @RunWith(JUnit4::class)
-class DeprecatedCustomViewDetectorTest : LintDetectorTest() {
+class DeprecatedButtonLayoutXmlDetectorTest : LintDetectorTest() {
 
-    override fun getIssues(): MutableList<Issue> = mutableListOf(DeprecatedCustomViewDetector.ISSUE)
+    override fun getIssues(): MutableList<Issue> = mutableListOf(DeprecatedButtonLayoutXmlDetector.ISSUE)
 
-    override fun getDetector(): Detector = DeprecatedCustomViewDetector()
+    override fun getDetector(): Detector = DeprecatedButtonLayoutXmlDetector()
 
     @Test
     fun expectPass() {
@@ -20,7 +23,7 @@ class DeprecatedCustomViewDetectorTest : LintDetectorTest() {
             .files(
                 xml(
                     "res/layout/layout.xml", """
-<View xmlns:android="http://schemas.android.com/apk/res/android"
+<com.lyft.android.ui.PrettyButton xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     />
@@ -36,7 +39,7 @@ class DeprecatedCustomViewDetectorTest : LintDetectorTest() {
             .files(
                 xml(
                     "res/layout/layout.xml", """
-<com.lyft.android.lint.app.DeprecatedCustomView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.lyft.android.ui.DeprecatedButton xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     />
@@ -45,9 +48,9 @@ class DeprecatedCustomViewDetectorTest : LintDetectorTest() {
             ).run()
             .expect(
                 """
-res/layout/layout.xml:2: Error: Don't use DeprecatedCustomView! [DeprecatedCustomView]
-<com.lyft.android.lint.app.DeprecatedCustomView xmlns:android="http://schemas.android.com/apk/res/android"
- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/layout/layout.xml:2: Error: Use a PrettyButton instead. [DeprecatedButtonLayoutXml]
+<com.lyft.android.ui.DeprecatedButton xmlns:android="http://schemas.android.com/apk/res/android"
+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 1 errors, 0 warnings
             """
             )

@@ -16,6 +16,7 @@ class IssueRegistry : IssueRegistry() {
     override val api: Int = CURRENT_API
 
     override val issues: List<Issue> = listOf(
-        DeprecatedCustomViewDetector.ISSUE
+        DeprecatedButtonConstructorDetector.ISSUE,
+        DeprecatedButtonLayoutXmlDetector.ISSUE
     )
 }
