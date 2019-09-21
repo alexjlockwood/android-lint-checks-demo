@@ -15,16 +15,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-    private fun createButton(): Button {
-        // Creating new instances of DeprecatedButton is prohibited by the
-        // `DeprecatedButtonJavaKotlinDetector` custom lint check.
-        return DeprecatedButton(this)
-    }
-
     private fun showToast() {
         // Usages of the Android Toast class is prohibited by the
         // `AndroidToastJavaKotlinDetector` custom lint check.
         Toast.makeText(this, "Some random test", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun createButton(): Button {
+        // Creating new instances of DeprecatedButton is prohibited by the
+        // `DeprecatedButtonJavaKotlinDetector` custom lint check.
+        return DeprecatedButton(this)
     }
 
     private fun getRedColor(): Int {
