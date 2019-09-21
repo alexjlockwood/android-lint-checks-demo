@@ -1,10 +1,10 @@
 # android-lint-checks-demo
 
-This is a simple demo project that shows how to configure and write custom lint checks in an Android project.
+This is a simple demo repo that shows how to configure and write custom lint checks in an Android project.
 
 ## Custom lint checks
 
-Custom lint checks are a great way to prohibit usages of certain classes and/or resources in a codebase. This project contains the following custom lint checks:
+Custom lint checks are a great way to prohibit usages of certain classes and resources in a codebase. To demonstrate their power, this project contains the following custom lint checks:
 
 * [`DeprecatedButtonLayoutXmlDetector`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/checks/src/main/java/com/lyft/android/lint/checks/DeprecatedButtonLayoutXmlDetector.kt) - Prohibits usages of a hypothetical `DeprecatedButton` class in layout XML resource files. 
 * [`DeprecatedButtonJavaKotlinDetector`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/checks/src/main/java/com/lyft/android/lint/checks/DeprecatedButtonJavaKotlinDetector.kt) - Prohibits instantiations of a hypothetical `DeprecatedButton` class in Java and Kotlin code.
@@ -22,11 +22,11 @@ This project contains the following two modules:
 
 ### Lint check jar library (`checks/`)
 
-This is the lint check jar library that other modules consume. This module contains the custom lint check implementations, each of which are listed in the [`IssueRegistry`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/checks/src/main/java/com/lyft/android/lint/checks/IssueRegistry.kt) class. Unit tests are written for each custom lint check implementation.
+This module is the lint check jar library that other Android library modules can consume. It contains the custom lint check implementations listed above, each of which are listed in the [`IssueRegistry`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/checks/src/main/java/com/lyft/android/lint/checks/IssueRegistry.kt) class.
 
 ### Android app module (`app/`)
 
-This module contains a generic sample app. In order to get the custom lint checks running on the code in this module, we depend on the `checks` module above in the [`app/build.gradle`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/app/build.gradle#L29) file:
+This module contains a generic sample Android app. In order to get the custom lint checks running on the code in this module, it depends on the `checks` module in the [`app/build.gradle`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/app/build.gradle#L29) file:
 
 ```
 dependencies {
@@ -39,5 +39,4 @@ dependencies {
 * [KotlinConf 2017 - Kotlin Static Analysis with Android Lint](https://www.youtube.com/watch?v=p8yX5-lPS6o) - An incredible 40 minute deep-dive into lint. I highly recommend watching this video.
 * [Getting the Most Out of Android Lint (Android Dev Summit '18)](https://www.youtube.com/watch?v=ffH-LD5uP4s) - A shorter video about Android lint, but also very informative.
 * [Source code for the Android Studio lint checks](https://android.googlesource.com/platform/tools/base/+/mirror-goog-studio-master-dev/lint/libs/lint-checks/src/main/java/com/android/tools/lint/checks) - In my opinion this is the best source of information when it comes to writing custom lint checks. You can learn a lot about how to write them by analyzing this source code.
-* [Sample project with custom lint checks](https://github.com/googlesamples/android-custom-lint-rules) - Another example repository with more detailed comments about the project's setup from Tor Norbye himself.
 * [Lint mailing list](https://groups.google.com/forum/#!forum/lint-dev) - A great place to asking questions about anything related to lint.
