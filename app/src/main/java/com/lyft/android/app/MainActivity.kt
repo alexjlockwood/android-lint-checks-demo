@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     private fun showToast() {
         // Usages of the Android Toast class is prohibited by the
         // `AndroidToastJavaKotlinDetector` custom lint check.
-        Toast.makeText(this, "Some random test", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Some random text", Toast.LENGTH_SHORT).show()
     }
 
     private fun createButton(): Button {

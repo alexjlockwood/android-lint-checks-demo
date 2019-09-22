@@ -8,7 +8,7 @@ import org.jetbrains.uast.UCallExpression
  * A custom lint check that prohibits usage of the `android.widget.Toast` class and suggests
  * using a Snackbar from the support library instead.
  */
-class AndroidToastJavaKotlinDetector : Detector(), Detector.UastScanner {
+class AndroidToastJavaKotlinDetector : Detector(), SourceCodeScanner {
 
     companion object {
         val ISSUE = Issue.create(

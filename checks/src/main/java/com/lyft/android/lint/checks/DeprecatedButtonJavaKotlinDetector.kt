@@ -8,7 +8,7 @@ import org.jetbrains.uast.UCallExpression
  * A custom lint check that prohibits new instances of `DeprecatedButton` from being instantiated
  * in Java and Kotlin code.
  */
-class DeprecatedButtonJavaKotlinDetector : Detector(), Detector.UastScanner {
+class DeprecatedButtonJavaKotlinDetector : Detector(), SourceCodeScanner {
 
     companion object {
         val ISSUE = Issue.create(

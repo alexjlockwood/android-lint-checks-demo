@@ -8,7 +8,7 @@ import org.jetbrains.uast.UElement
  * A custom lint check that prohibits usages of the `R.color.deprecated_red` resource in
  * Java and Kotlin code.
  */
-class DeprecatedRedResourceJavaKotlinDetector : Detector(), Detector.UastScanner {
+class DeprecatedRedResourceJavaKotlinDetector : Detector(), SourceCodeScanner {
 
     companion object {
         val ISSUE = Issue.create(
