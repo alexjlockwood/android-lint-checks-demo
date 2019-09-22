@@ -8,15 +8,15 @@ import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
 /**
- * Tests for the [DeprecatedRedResourceJavaKotlinDetector] custom lint check.
+ * Tests for the [DeprecatedPurpleColorJavaKotlinDetector] custom lint check.
  */
 @RunWith(JUnit4::class)
-class DeprecatedRedResourceJavaKotlinDetectorTest : LintDetectorTest() {
+class DeprecatedPurpleColorJavaKotlinDetectorTest : LintDetectorTest() {
 
     override fun getIssues(): MutableList<Issue> =
-        mutableListOf(DeprecatedRedResourceJavaKotlinDetector.ISSUE)
+        mutableListOf(DeprecatedPurpleColorJavaKotlinDetector.ISSUE)
 
-    override fun getDetector(): Detector = DeprecatedRedResourceJavaKotlinDetector()
+    override fun getDetector(): Detector = DeprecatedPurpleColorJavaKotlinDetector()
 
     @Test
     fun testJava_expectPass() {
@@ -30,7 +30,7 @@ package com.lyft.android.lint.checks;
 public class TestClass {
 
     public static void test() {
-        int redResId = R.color.red;
+        int purpleResId = R.color.purple;
     }
 }
         """
@@ -52,7 +52,7 @@ package com.lyft.android.lint.checks;
 public class TestClass {
 
     public static void test() {
-        int deprecatedRedResId = R.color.deprecated_red;
+        int deprecatedPurpleResId = R.color.deprecated_purple;
     }
 }
         """
@@ -61,9 +61,9 @@ public class TestClass {
             .run()
             .expect(
                 """
-src/com/lyft/android/lint/checks/TestClass.java:7: Error: The R.color.deprecated_red resource is deprecated and should not be used. [DeprecatedRedResourceJavaKotlin]
-        int deprecatedRedResId = R.color.deprecated_red;
-                                 ~~~~~~~~~~~~~~~~~~~~~~
+src/com/lyft/android/lint/checks/TestClass.java:7: Error: The R.color.deprecated_purple resource is deprecated and should not be used. [DeprecatedPurpleColorJavaKotlin]
+        int deprecatedPurpleResId = R.color.deprecated_purple;
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~
 1 errors, 0 warnings
             """
             )
@@ -82,7 +82,7 @@ import android.content.Context
 import com.lyft.android.ui.PrettyButton
 
 fun test(context: Context) {
-    val redResId = R.color.red
+    val purpleResId = R.color.purple
 }
         """
                 )
@@ -101,7 +101,7 @@ fun test(context: Context) {
 package com.lyft.android.lint.checks
 
 fun test() {
-    val deprecatedRedResId = R.color.deprecated_red
+    val deprecatedPurpleResId = R.color.deprecated_purple
 }
         """
                 )
@@ -109,9 +109,9 @@ fun test() {
             .run()
             .expect(
                 """
-src/com/lyft/android/lint/checks/test.kt:5: Error: The R.color.deprecated_red resource is deprecated and should not be used. [DeprecatedRedResourceJavaKotlin]
-    val deprecatedRedResId = R.color.deprecated_red
-                             ~~~~~~~~~~~~~~~~~~~~~~
+src/com/lyft/android/lint/checks/test.kt:5: Error: The R.color.deprecated_purple resource is deprecated and should not be used. [DeprecatedPurpleColorJavaKotlin]
+    val deprecatedPurpleResId = R.color.deprecated_purple
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~
 1 errors, 0 warnings
             """
             )
@@ -124,8 +124,8 @@ src/com/lyft/android/lint/checks/test.kt:5: Error: The R.color.deprecated_red re
 private val COLOR_RESOURCES = LintDetectorTest.xml(
     "res/values/colors.xml", """
 <resources>
-    <color name="red">#ff0000</color>
-    <color name="deprecated_red">#ff0000</color>
+    <color name="purple">#A828A8</color>
+    <color name="deprecated_purple">#A828A8</color>
 </resources>
 """
 )

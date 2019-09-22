@@ -8,14 +8,14 @@ import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
 /**
- * Tests for the [DeprecatedRedResourceLayoutXmlDetector] custom lint check.
+ * Tests for the [DeprecatedPurpleColorLayoutXmlDetector] custom lint check.
  */
 @RunWith(JUnit4::class)
-class DeprecatedRedResourceLayoutXmlDetectorTest : LintDetectorTest() {
+class DeprecatedPurpleColorLayoutXmlDetectorTest : LintDetectorTest() {
 
-    override fun getIssues(): MutableList<Issue> = mutableListOf(DeprecatedRedResourceLayoutXmlDetector.ISSUE)
+    override fun getIssues(): MutableList<Issue> = mutableListOf(DeprecatedPurpleColorLayoutXmlDetector.ISSUE)
 
-    override fun getDetector(): Detector = DeprecatedRedResourceLayoutXmlDetector()
+    override fun getDetector(): Detector = DeprecatedPurpleColorLayoutXmlDetector()
 
     @Test
     fun expectPass() {
@@ -43,16 +43,16 @@ class DeprecatedRedResourceLayoutXmlDetectorTest : LintDetectorTest() {
 <View xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/deprecated_red"
+    android:background="@color/deprecated_purple"
     />
 """
                 )
             ).run()
             .expect(
                 """
-res/layout/layout.xml:5: Error: The @color/deprecated_red resource is deprecated and should not be used. [DeprecatedRedResourceLayoutXml]
-    android:background="@color/deprecated_red"
-                        ~~~~~~~~~~~~~~~~~~~~~
+res/layout/layout.xml:5: Error: The @color/deprecated_purple resource is deprecated and should not be used. [DeprecatedPurpleColorLayoutXml]
+    android:background="@color/deprecated_purple"
+                        ~~~~~~~~~~~~~~~~~~~~~~~~
 1 errors, 0 warnings
             """
             )

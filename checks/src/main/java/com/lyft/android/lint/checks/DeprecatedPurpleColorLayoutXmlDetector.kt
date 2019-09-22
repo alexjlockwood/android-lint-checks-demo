@@ -7,19 +7,19 @@ import com.android.tools.lint.detector.api.*
 import org.w3c.dom.Attr
 
 /**
- * A custom lint check that prohibits usages of the `@color/deprecated_red` in layout XML files.
+ * A custom lint check that prohibits usages of the `@color/deprecated_purple` in layout XML files.
  */
-class DeprecatedRedResourceLayoutXmlDetector : ResourceXmlDetector() {
+class DeprecatedPurpleColorLayoutXmlDetector : ResourceXmlDetector() {
 
     companion object {
         val ISSUE = Issue.create(
-            id = "DeprecatedRedResourceLayoutXml",
-            briefDescription = "Prohibits usages of the `deprecated_red` color resource in layout XML",
-            explanation = "The `deprecated_red` color resource is deprecated and should no longer be used",
+            id = "DeprecatedPurpleColorLayoutXml",
+            briefDescription = "Prohibits usages of the `deprecated_purple` color resource in layout XML",
+            explanation = "The `deprecated_purple` color resource is deprecated and should no longer be used",
             category = Category.CORRECTNESS,
             severity = Severity.ERROR,
             implementation = Implementation(
-                DeprecatedRedResourceLayoutXmlDetector::class.java,
+                DeprecatedPurpleColorLayoutXmlDetector::class.java,
                 Scope.RESOURCE_FILE_SCOPE
             )
         )
@@ -56,8 +56,8 @@ class DeprecatedRedResourceLayoutXmlDetector : ResourceXmlDetector() {
             // (i.e. `@android:color/***`).
             return
         }
-        if (resourceUrl.name != "deprecated_red") {
-            // Finally, ignore the attribute value if it isn't named "deprecated_red".
+        if (resourceUrl.name != "deprecated_purple") {
+            // Finally, ignore the attribute value if it isn't named "deprecated_purple".
             return
         }
 
@@ -65,7 +65,7 @@ class DeprecatedRedResourceLayoutXmlDetector : ResourceXmlDetector() {
             issue = ISSUE,
             scope = attribute,
             location = context.getValueLocation(attribute),
-            message = "The `@color/deprecated_red` resource is deprecated and should not be used."
+            message = "The `@color/deprecated_purple` resource is deprecated and should not be used."
         )
 
     }

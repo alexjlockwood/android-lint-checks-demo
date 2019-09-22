@@ -21,15 +21,15 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <!-- Referencing the `@color/deprecated_red` color resource is prohibited
-         by the `DeprecatedRedResourceLayoutXmlDetector` custom lint check. -->
+    <!-- Referencing the `@color/deprecated_purple` color resource is prohibited
+         by the `DeprecatedPurpleColorLayoutXmlDetector` custom lint check. -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:background="@color/deprecated_red"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:text="This view uses a deprecated red color as its background!"/>
+        android:background="@color/deprecated_purple"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title.Inverse"
+        android:text="This view uses a deprecated purple color as its background!"/>
 
 </LinearLayout>

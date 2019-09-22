@@ -27,9 +27,9 @@ class MainActivity : AppCompatActivity() {
         return DeprecatedButton(this)
     }
 
-    private fun getRedColor(): Int {
-        // References to the `R.color.deprecated_red` resource are prohibited by the
-        // `DeprecatedRedResourceJavaKotlin` custom lint check.
-        return ContextCompat.getColor(this, R.color.deprecated_red)
+    private fun getPurpleColor(): Int {
+        // References to the `R.color.deprecated_purple` resource are prohibited by the
+        // `DeprecatedPurpleColorJavaKotlin` custom lint check.
+        return ContextCompat.getColor(this, R.color.deprecated_purple)
     }
 }

@@ -5,20 +5,20 @@ import com.android.tools.lint.detector.api.*
 import org.jetbrains.uast.UElement
 
 /**
- * A custom lint check that prohibits usages of the `R.color.deprecated_red` resource in
+ * A custom lint check that prohibits usages of the `R.color.deprecated_purple` resource in
  * Java and Kotlin code.
  */
-class DeprecatedRedResourceJavaKotlinDetector : Detector(), SourceCodeScanner {
+class DeprecatedPurpleColorJavaKotlinDetector : Detector(), SourceCodeScanner {
 
     companion object {
         val ISSUE = Issue.create(
-            id = "DeprecatedRedResourceJavaKotlin",
-            briefDescription = "Prohibits usages of the `deprecated_red` color resource in Java and Kotlin code",
-            explanation = "The `deprecated_red` color resource is deprecated and should no longer be used",
+            id = "DeprecatedPurpleColorJavaKotlin",
+            briefDescription = "Prohibits usages of the `deprecated_purple` color resource in Java and Kotlin code",
+            explanation = "The `deprecated_purple` color resource is deprecated and should no longer be used",
             category = Category.CORRECTNESS,
             severity = Severity.ERROR,
             implementation = Implementation(
-                DeprecatedRedResourceJavaKotlinDetector::class.java,
+                DeprecatedPurpleColorJavaKotlinDetector::class.java,
                 Scope.JAVA_FILE_SCOPE
             )
         )
@@ -46,8 +46,8 @@ class DeprecatedRedResourceJavaKotlinDetector : Detector(), SourceCodeScanner {
             // (i.e. `android.R.color.***`).
             return
         }
-        if (name != "deprecated_red") {
-            // Finally, ignore the resource reference if it isn't named "deprecated_red".
+        if (name != "deprecated_purple") {
+            // Finally, ignore the resource reference if it isn't named "deprecated_purple".
             return
         }
 
@@ -55,7 +55,7 @@ class DeprecatedRedResourceJavaKotlinDetector : Detector(), SourceCodeScanner {
             issue = ISSUE,
             scope = node,
             location = context.getLocation(node),
-            message = "The `R.color.deprecated_red` resource is deprecated and should not be used."
+            message = "The `R.color.deprecated_purple` resource is deprecated and should not be used."
         )
     }
 }
