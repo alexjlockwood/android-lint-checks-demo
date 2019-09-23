@@ -13,7 +13,7 @@ class HardcodedHexColorXmlDetector : ResourceXmlDetector() {
         val ISSUE = Issue.create(
             id = "HardcodedHexColorXml",
             briefDescription = "Prohibits hardcoded hex colors in layout XML",
-            explanation = "Hardcoded hex colors should be declared in a <color> resource",
+            explanation = "Hardcoded hex colors should be declared in a `<color>` resource",
             category = Category.CORRECTNESS,
             severity = Severity.ERROR,
             implementation = Implementation(
@@ -50,8 +50,7 @@ class HardcodedHexColorXmlDetector : ResourceXmlDetector() {
             issue = ISSUE,
             scope = attribute,
             location = context.getValueLocation(attribute),
-            message = "Hardcoded hex colors should be declared in a <color> resource."
+            message = "Hardcoded hex colors should be declared in a `<color>` resource."
         )
-
     }
 }

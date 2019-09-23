@@ -37,6 +37,7 @@ class AndroidToastJavaKotlinDetector : Detector(), SourceCodeScanner {
             // the `android.widget.Toast` class.
             return
         }
+
         context.report(
             issue = ISSUE,
             scope = node,
