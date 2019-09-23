@@ -3,6 +3,7 @@ package com.lyft.android.lint.checks
 import com.android.tools.lint.checks.infrastructure.LintDetectorTest
 import com.android.tools.lint.detector.api.Detector
 import com.android.tools.lint.detector.api.Issue
+import com.lyft.android.lint.solutions.OkayStringXmlDetector
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4

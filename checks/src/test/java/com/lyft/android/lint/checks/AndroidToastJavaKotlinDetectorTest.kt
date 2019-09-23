@@ -2,6 +2,7 @@ package com.lyft.android.lint.checks
 
 import com.android.tools.lint.checks.infrastructure.LintDetectorTest
 import com.android.tools.lint.detector.api.Detector
+import com.lyft.android.lint.solutions.AndroidToastJavaKotlinDetector
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -14,7 +15,8 @@ class AndroidToastJavaKotlinDetectorTest : LintDetectorTest() {
 
     override fun getIssues() = mutableListOf(AndroidToastJavaKotlinDetector.ISSUE)
 
-    override fun getDetector(): Detector = AndroidToastJavaKotlinDetector()
+    override fun getDetector(): Detector =
+        AndroidToastJavaKotlinDetector()
 
     @Test
     fun testJava_expectPass() {

@@ -1,26 +1,23 @@
-package com.lyft.android.lint.checks
+package com.lyft.android.lint.solutions
 
 import com.android.resources.ResourceFolderType
-import com.android.resources.ResourceType
-import com.android.resources.ResourceUrl
 import com.android.tools.lint.detector.api.*
 import org.w3c.dom.Attr
 
 /**
- * A custom lint check that prohibits usages of the `@color/deprecated_purple`
- * color resource in layout XML files.
+ * A custom lint check that prohibits hardcoded hex colors in layout XML.
  */
-class DeprecatedPurpleColorXmlDetector : ResourceXmlDetector() {
+class HardcodedHexColorXmlDetector : ResourceXmlDetector() {
 
     companion object {
         val ISSUE = Issue.create(
-            id = "DeprecatedPurpleColorXml",
-            briefDescription = "Prohibits usages of the `deprecated_purple` color resource in layout XML",
-            explanation = "The `deprecated_purple` color resource is deprecated and should no longer be used",
+            id = "HardcodedHexColorXml",
+            briefDescription = "Prohibits hardcoded hex colors in layout XML",
+            explanation = "Hardcoded hex colors should be declared in a `<color>` resource",
             category = Category.CORRECTNESS,
             severity = Severity.ERROR,
             implementation = Implementation(
-                DeprecatedPurpleColorXmlDetector::class.java,
+                HardcodedHexColorXmlDetector::class.java,
                 Scope.RESOURCE_FILE_SCOPE
             )
         )
@@ -44,21 +41,8 @@ class DeprecatedPurpleColorXmlDetector : ResourceXmlDetector() {
         // Get the value of the XML attribute.
         val attributeValue = attribute.nodeValue
 
-        // Attempt to parse the attribute value into a resource url reference.
-        // Return immediately if the attribute value is not a resource url reference.
-        val resourceUrl = ResourceUrl.parse(attributeValue) ?: return
-
-        if (resourceUrl.type != ResourceType.COLOR) {
-            // Ignore the attribute value if it isn't a color resource.
-            return
-        }
-        if (resourceUrl.isFramework) {
-            // Ignore the attribute value if this is a color resource from the Android framework
-            // (i.e. `@android:color/***`).
-            return
-        }
-        if (resourceUrl.name != "deprecated_purple") {
-            // Finally, ignore the attribute value if it isn't named "deprecated_purple".
+        if (!attributeValue.startsWith("#")) {
+            // Do nothing if the attribute value isn't a hex color.
             return
         }
 
@@ -66,8 +50,7 @@ class DeprecatedPurpleColorXmlDetector : ResourceXmlDetector() {
             issue = ISSUE,
             scope = attribute,
             location = context.getValueLocation(attribute),
-            message = "`@color/deprecated_purple` should not be used."
+            message = "Hardcoded hex colors should be declared in a `<color>` resource."
         )
-
     }
 }

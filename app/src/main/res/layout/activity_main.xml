@@ -1,47 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="16dp"
     tools:context="com.lyft.android.app.MainActivity"
     tools:ignore="HardcodedText" >
 
-    <!-- Using DeprecatedButton in layout XML is prohibited by the
-         `DeprecatedButtonXmlDetector` custom lint check. -->
-    <com.lyft.android.ui.DeprecatedButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="This button class is deprecated!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <!-- Referencing the `@color/deprecated_purple` color resource is prohibited
-         by the `DeprecatedPurpleColorXmlDetector` custom lint check. -->
+    <!-- LINT ERROR: This TextView should not use a hardcoded hex color (`#f00`). -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:background="@color/deprecated_purple"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title.Inverse"
-        android:text="This view uses a deprecated purple color as its background!"/>
-
-    <!-- Hardcoded hex colors embedded inside a layout resource file is prohibited
-         by the `HardcodedHexColorXmlDetector` custom lint check. -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
         android:background="#f00"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:text="This view uses a hardcoded hex color!"/>
-
 
 </LinearLayout>

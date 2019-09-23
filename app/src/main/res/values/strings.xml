@@ -2,8 +2,7 @@
 
     <string name="app_name">Android Lint Checks Demo</string>
 
-    <!-- Using the word 'Okay' in a string resource file is prohibited by the
-         `OkayStringXmlDetector` custom lint check. -->
-    <string name="okay">Okay</string>
+    <!-- LINT ERROR: 'Okay' should be spelled 'OK'! -->
+    <string name="ok">Okay</string>
 
 </resources>
