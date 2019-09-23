@@ -32,4 +32,16 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Title.Inverse"
         android:text="This view uses a deprecated purple color as its background!"/>
 
+    <!-- Hardcoded hex colors embedded inside a layout resource file is prohibited
+         by the `HardcodedHexColorXmlDetector` custom lint check. -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:background="#f00"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:text="This view uses a hardcoded hex color!"/>
+
+
 </LinearLayout>

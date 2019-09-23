@@ -21,6 +21,7 @@ class IssueRegistry : IssueRegistry() {
         DeprecatedPurpleColorXmlDetector.ISSUE,
         DeprecatedPurpleColorJavaKotlinDetector.ISSUE,
         AndroidToastJavaKotlinDetector.ISSUE,
-        OkayStringXmlDetector.ISSUE
+        OkayStringXmlDetector.ISSUE,
+        HardcodedHexColorXmlDetector.ISSUE
     )
 }
