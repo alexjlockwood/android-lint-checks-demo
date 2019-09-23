@@ -17,9 +17,10 @@ class IssueRegistry : IssueRegistry() {
 
     override val issues: List<Issue> = listOf(
         DeprecatedButtonJavaKotlinDetector.ISSUE,
-        DeprecatedButtonLayoutXmlDetector.ISSUE,
-        DeprecatedPurpleColorLayoutXmlDetector.ISSUE,
+        DeprecatedButtonXmlDetector.ISSUE,
+        DeprecatedPurpleColorXmlDetector.ISSUE,
         DeprecatedPurpleColorJavaKotlinDetector.ISSUE,
-        AndroidToastJavaKotlinDetector.ISSUE
+        AndroidToastJavaKotlinDetector.ISSUE,
+        OkayStringXmlDetector.ISSUE
     )
 }

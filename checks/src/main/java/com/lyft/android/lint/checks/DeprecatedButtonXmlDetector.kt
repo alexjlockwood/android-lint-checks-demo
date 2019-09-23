@@ -7,17 +7,17 @@ import org.w3c.dom.Element
 /**
  * A custom lint check that prohibits usages of `DeprecatedButton` in layout XML.
  */
-class DeprecatedButtonLayoutXmlDetector : ResourceXmlDetector() {
+class DeprecatedButtonXmlDetector : ResourceXmlDetector() {
 
     companion object {
         val ISSUE = Issue.create(
-            id = "DeprecatedButtonLayoutXml",
-            briefDescription = "Prohibits DeprecatedButton from being used in layout XML",
-            explanation = "DeprecatedButton is deprecated and should no longer be used",
+            id = "DeprecatedButtonXml",
+            briefDescription = "Don't use `DeprecatedButton` in layout XML",
+            explanation = "`DeprecatedButton` is deprecated and should no longer be used",
             category = Category.CORRECTNESS,
             severity = Severity.ERROR,
             implementation = Implementation(
-                DeprecatedButtonLayoutXmlDetector::class.java,
+                DeprecatedButtonXmlDetector::class.java,
                 Scope.RESOURCE_FILE_SCOPE
             )
         )
@@ -41,7 +41,7 @@ class DeprecatedButtonLayoutXmlDetector : ResourceXmlDetector() {
             issue = ISSUE,
             scope = element,
             location = context.getNameLocation(element),
-            message = "Use a `PrettyButton` instead."
+            message = "`DeprecatedButton` should not be used."
         )
     }
 }

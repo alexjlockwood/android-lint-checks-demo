@@ -5,9 +5,9 @@ import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatButton
 
 /**
- * An old custom button class that is now deprecated in favor of [PrettyButton].
+ * An old custom button class that is now deprecated.
  *
- * A `DeprecatedButtonLayoutXmlDetector` custom lint check has been written to prohibit new
+ * A `DeprecatedButtonXmlDetector` custom lint check has been written to prohibit new
  * usages of this button class in layout XML.
  *
  * A `DeprecatedButtonJavaKotlinDetector` has also been written to prohibit new

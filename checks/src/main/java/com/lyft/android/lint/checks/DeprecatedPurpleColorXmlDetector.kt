@@ -7,19 +7,20 @@ import com.android.tools.lint.detector.api.*
 import org.w3c.dom.Attr
 
 /**
- * A custom lint check that prohibits usages of the `@color/deprecated_purple` in layout XML files.
+ * A custom lint check that prohibits usages of the `@color/deprecated_purple`
+ * color resource in layout XML files.
  */
-class DeprecatedPurpleColorLayoutXmlDetector : ResourceXmlDetector() {
+class DeprecatedPurpleColorXmlDetector : ResourceXmlDetector() {
 
     companion object {
         val ISSUE = Issue.create(
-            id = "DeprecatedPurpleColorLayoutXml",
+            id = "DeprecatedPurpleColorXml",
             briefDescription = "Prohibits usages of the `deprecated_purple` color resource in layout XML",
             explanation = "The `deprecated_purple` color resource is deprecated and should no longer be used",
             category = Category.CORRECTNESS,
             severity = Severity.ERROR,
             implementation = Implementation(
-                DeprecatedPurpleColorLayoutXmlDetector::class.java,
+                DeprecatedPurpleColorXmlDetector::class.java,
                 Scope.RESOURCE_FILE_SCOPE
             )
         )

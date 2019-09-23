@@ -23,18 +23,18 @@ class DeprecatedButtonJavaKotlinDetectorTest : LintDetectorTest() {
         lint()
             .files(
                 STUB_DEPRECATED_BUTTON,
-                STUB_PRETTY_BUTTON,
+                STUB_MATERIAL_BUTTON,
                 java(
                     """
 package com.lyft.android.lint.checks;
 
 import android.content.Context;
-import com.lyft.android.ui.PrettyButton;
+import com.google.android.material.button.MaterialButton;
 
 public class TestClass {
     
     public static void test(Context context) {
-        PrettyButton prettyButton = new PrettyButton(context);
+        MaterialButton materialButton = new MaterialButton(context);
     }
 }
         """
@@ -49,7 +49,7 @@ public class TestClass {
         lint()
             .files(
                 STUB_DEPRECATED_BUTTON,
-                STUB_PRETTY_BUTTON,
+                STUB_MATERIAL_BUTTON,
                 java(
                     """
 package com.lyft.android.lint.checks;
@@ -69,7 +69,7 @@ public class TestClass {
             .run()
             .expect(
                 """
-src/com/lyft/android/lint/checks/TestClass.java:10: Error: Use a PrettyButton instead. [DeprecatedButtonJavaKotlin]
+src/com/lyft/android/lint/checks/TestClass.java:10: Error: DeprecatedButton should not be used. [DeprecatedButtonJavaKotlin]
         DeprecatedButton deprecatedButton = new DeprecatedButton(context);
                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 1 errors, 0 warnings
@@ -82,16 +82,16 @@ src/com/lyft/android/lint/checks/TestClass.java:10: Error: Use a PrettyButton in
         lint()
             .files(
                 STUB_DEPRECATED_BUTTON,
-                STUB_PRETTY_BUTTON,
+                STUB_MATERIAL_BUTTON,
                 kotlin(
                     """
 package com.lyft.android.lint.checks
 
 import android.content.Context
-import com.lyft.android.ui.PrettyButton
+import com.google.android.material.button.MaterialButton
 
 fun test(context: Context) {
-    val prettyButton = PrettyButton(context)
+    val materialButton = MaterialButton(context)
 }
         """
                 )
@@ -105,7 +105,7 @@ fun test(context: Context) {
         lint()
             .files(
                 STUB_DEPRECATED_BUTTON,
-                STUB_PRETTY_BUTTON,
+                STUB_MATERIAL_BUTTON,
                 kotlin(
                     """
 package com.lyft.android.lint.checks
@@ -122,7 +122,7 @@ fun test(context: Context) {
             .run()
             .expect(
                 """
-src/com/lyft/android/lint/checks/test.kt:8: Error: Use a PrettyButton instead. [DeprecatedButtonJavaKotlin]
+src/com/lyft/android/lint/checks/test.kt:8: Error: DeprecatedButton should not be used. [DeprecatedButtonJavaKotlin]
     val deprecatedButton = DeprecatedButton(context)
                            ~~~~~~~~~~~~~~~~~~~~~~~~~
 1 errors, 0 warnings
@@ -131,7 +131,8 @@ src/com/lyft/android/lint/checks/test.kt:8: Error: Use a PrettyButton instead. [
     }
 }
 
-// Including these stub classes are necessary in order to get the tests to run successfully.
+// Including these stub classes for non-framework widgets is necessary
+// in order to get the tests to run successfully.
 
 private val STUB_DEPRECATED_BUTTON = LintDetectorTest.kotlin(
     """
@@ -148,17 +149,17 @@ open class DeprecatedButton @JvmOverloads constructor(
             """
 )
 
-private val STUB_PRETTY_BUTTON = LintDetectorTest.kotlin(
+private val STUB_MATERIAL_BUTTON = LintDetectorTest.kotlin(
     """
-package com.lyft.android.ui
+package com.google.android.material.button
 
 import android.content.Context
 import android.util.AttributeSet
-import com.google.android.material.button.MaterialButton
+import androidx.appcompat.widget.AppCompatButton
 
-open class PrettyButton @JvmOverloads constructor(
+open class MaterialButton @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null
-) : MaterialButton(context, attrs)
+) : AppCompatButton(context, attrs)
             """
 )

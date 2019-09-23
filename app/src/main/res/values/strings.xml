@@ -1,3 +1,9 @@
 <resources>
+
     <string name="app_name">Android Lint Checks Demo</string>
+
+    <!-- Using the word 'Okay' in a string resource file is prohibited by the
+         `OkayStringXmlDetector` custom lint check. -->
+    <string name="okay">Okay</string>
+
 </resources>

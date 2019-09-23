@@ -8,14 +8,14 @@ import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
 /**
- * Tests for the [DeprecatedButtonLayoutXmlDetector] custom lint check.
+ * Tests for the [DeprecatedPurpleColorXmlDetector] custom lint check.
  */
 @RunWith(JUnit4::class)
-class DeprecatedButtonLayoutXmlDetectorTest : LintDetectorTest() {
+class DeprecatedPurpleColorXmlDetectorTest : LintDetectorTest() {
 
-    override fun getIssues(): MutableList<Issue> = mutableListOf(DeprecatedButtonLayoutXmlDetector.ISSUE)
+    override fun getIssues(): MutableList<Issue> = mutableListOf(DeprecatedPurpleColorXmlDetector.ISSUE)
 
-    override fun getDetector(): Detector = DeprecatedButtonLayoutXmlDetector()
+    override fun getDetector(): Detector = DeprecatedPurpleColorXmlDetector()
 
     @Test
     fun expectPass() {
@@ -23,9 +23,10 @@ class DeprecatedButtonLayoutXmlDetectorTest : LintDetectorTest() {
             .files(
                 xml(
                     "res/layout/layout.xml", """
-<com.lyft.android.ui.PrettyButton xmlns:android="http://schemas.android.com/apk/res/android"
+<View xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="#000000"
     />
 """
                 )
@@ -39,18 +40,19 @@ class DeprecatedButtonLayoutXmlDetectorTest : LintDetectorTest() {
             .files(
                 xml(
                     "res/layout/layout.xml", """
-<com.lyft.android.ui.DeprecatedButton xmlns:android="http://schemas.android.com/apk/res/android"
+<View xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="@color/deprecated_purple"
     />
 """
                 )
             ).run()
             .expect(
                 """
-res/layout/layout.xml:2: Error: Use a PrettyButton instead. [DeprecatedButtonLayoutXml]
-<com.lyft.android.ui.DeprecatedButton xmlns:android="http://schemas.android.com/apk/res/android"
- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+res/layout/layout.xml:5: Error: The @color/deprecated_purple resource is deprecated and should not be used. [DeprecatedPurpleColorXml]
+    android:background="@color/deprecated_purple"
+                        ~~~~~~~~~~~~~~~~~~~~~~~~
 1 errors, 0 warnings
             """
             )

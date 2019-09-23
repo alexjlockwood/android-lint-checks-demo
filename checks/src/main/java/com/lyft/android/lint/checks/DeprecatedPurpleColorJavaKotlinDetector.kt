@@ -5,16 +5,16 @@ import com.android.tools.lint.detector.api.*
 import org.jetbrains.uast.UElement
 
 /**
- * A custom lint check that prohibits usages of the `R.color.deprecated_purple` resource in
- * Java and Kotlin code.
+ * A custom lint check that prohibits usages of the `R.color.deprecated_purple`
+ * color resource in Java and Kotlin code.
  */
 class DeprecatedPurpleColorJavaKotlinDetector : Detector(), SourceCodeScanner {
 
     companion object {
         val ISSUE = Issue.create(
             id = "DeprecatedPurpleColorJavaKotlin",
-            briefDescription = "Prohibits usages of the `deprecated_purple` color resource in Java and Kotlin code",
-            explanation = "The `deprecated_purple` color resource is deprecated and should no longer be used",
+            briefDescription = "Don't use the `deprecated_purple` color resource",
+            explanation = "The `deprecated_purple` color resource is deprecated and should not be used",
             category = Category.CORRECTNESS,
             severity = Severity.ERROR,
             implementation = Implementation(
@@ -55,7 +55,7 @@ class DeprecatedPurpleColorJavaKotlinDetector : Detector(), SourceCodeScanner {
             issue = ISSUE,
             scope = node,
             location = context.getLocation(node),
-            message = "The `R.color.deprecated_purple` resource is deprecated and should not be used."
+            message = "`R.color.deprecated_purple` should not be used."
         )
     }
 }

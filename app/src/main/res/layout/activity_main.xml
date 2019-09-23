@@ -11,7 +11,7 @@
     tools:ignore="HardcodedText" >
 
     <!-- Using DeprecatedButton in layout XML is prohibited by the
-         `DeprecatedButtonLayoutXmlDetector` custom lint check. -->
+         `DeprecatedButtonXmlDetector` custom lint check. -->
     <com.lyft.android.ui.DeprecatedButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <!-- Referencing the `@color/deprecated_purple` color resource is prohibited
-         by the `DeprecatedPurpleColorLayoutXmlDetector` custom lint check. -->
+         by the `DeprecatedPurpleColorXmlDetector` custom lint check. -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

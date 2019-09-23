@@ -5,16 +5,16 @@ import com.intellij.psi.PsiMethod
 import org.jetbrains.uast.UCallExpression
 
 /**
- * A custom lint check that prohibits new instances of `DeprecatedButton` from being instantiated
- * in Java and Kotlin code.
+ * A custom lint check that prohibits new instances of `DeprecatedButton`
+ * from being instantiated in Java and Kotlin code.
  */
 class DeprecatedButtonJavaKotlinDetector : Detector(), SourceCodeScanner {
 
     companion object {
         val ISSUE = Issue.create(
             id = "DeprecatedButtonJavaKotlin",
-            briefDescription = "Prohibits DeprecatedButton instances from being instantiated",
-            explanation = "DeprecatedButton is deprecated and should no longer be used",
+            briefDescription = "Don't use `DeprecatedButton` in Java/Kotlin code",
+            explanation = "`DeprecatedButton` is deprecated and should no longer be used",
             category = Category.CORRECTNESS,
             severity = Severity.ERROR,
             implementation = Implementation(
@@ -40,7 +40,7 @@ class DeprecatedButtonJavaKotlinDetector : Detector(), SourceCodeScanner {
             issue = ISSUE,
             scope = node,
             location = context.getLocation(node),
-            message = "Use a `PrettyButton` instead."
+            message = "`DeprecatedButton` should not be used."
         )
     }
 }

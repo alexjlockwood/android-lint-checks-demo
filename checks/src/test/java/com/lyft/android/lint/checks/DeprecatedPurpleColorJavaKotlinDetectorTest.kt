@@ -61,7 +61,7 @@ public class TestClass {
             .run()
             .expect(
                 """
-src/com/lyft/android/lint/checks/TestClass.java:7: Error: The R.color.deprecated_purple resource is deprecated and should not be used. [DeprecatedPurpleColorJavaKotlin]
+src/com/lyft/android/lint/checks/TestClass.java:7: Error: R.color.deprecated_purple should not be used. [DeprecatedPurpleColorJavaKotlin]
         int deprecatedPurpleResId = R.color.deprecated_purple;
                                     ~~~~~~~~~~~~~~~~~~~~~~~~~
 1 errors, 0 warnings
@@ -79,7 +79,6 @@ src/com/lyft/android/lint/checks/TestClass.java:7: Error: The R.color.deprecated
 package com.lyft.android.lint.checks
 
 import android.content.Context
-import com.lyft.android.ui.PrettyButton
 
 fun test(context: Context) {
     val purpleResId = R.color.purple
@@ -109,7 +108,7 @@ fun test() {
             .run()
             .expect(
                 """
-src/com/lyft/android/lint/checks/test.kt:5: Error: The R.color.deprecated_purple resource is deprecated and should not be used. [DeprecatedPurpleColorJavaKotlin]
+src/com/lyft/android/lint/checks/test.kt:5: Error: R.color.deprecated_purple should not be used. [DeprecatedPurpleColorJavaKotlin]
     val deprecatedPurpleResId = R.color.deprecated_purple
                                 ~~~~~~~~~~~~~~~~~~~~~~~~~
 1 errors, 0 warnings

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="colorPrimary">#8B37FF</color>
     <color name="colorPrimaryDark">#590DC4</color>
     <color name="colorAccent">#8B37FF</color>
+
+    <color name="deprecated_purple">#A828A8</color>
+
 </resources>
