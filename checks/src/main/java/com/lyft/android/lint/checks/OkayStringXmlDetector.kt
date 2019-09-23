@@ -62,7 +62,15 @@ class OkayStringXmlDetector : ResourceXmlDetector() {
             issue = ISSUE,
             scope = element,
             location = context.getNameLocation(textNode),
-            message = "Use 'OK' instead of 'Okay'."
+            message = "'Okay' should be spelled 'OK' in string resources.",
+            // Pro tip: optionally specify a `LintFix` when reporting issues to propose
+            // quick-fixes directly in the IDE! Watch Tor's lint talk for more
+            // information: https://j.mp/lint-in-depth
+            quickfixData = LintFix.create()
+                .replace()
+                .text("Okay")
+                .with("OK")
+                .build()
         )
     }
 }

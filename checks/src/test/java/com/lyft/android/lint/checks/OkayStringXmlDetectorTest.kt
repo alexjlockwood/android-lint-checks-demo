@@ -48,7 +48,7 @@ class OkayStringXmlDetectorTest : LintDetectorTest() {
             .run()
             .expect(
                 """
-res/values/strings.xml:3: Error: Use 'OK' instead of 'Okay'. [OkayStringXml]
+res/values/strings.xml:3: Error: 'Okay' should be spelled 'OK' in string resources. [OkayStringXml]
     <string name="ok">Okay</string>
                       ~~~~~
 1 errors, 0 warnings
