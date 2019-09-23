@@ -14,7 +14,7 @@ class AndroidToastJavaKotlinDetector : Detector(), SourceCodeScanner {
         val ISSUE = Issue.create(
             id = "AndroidToastJavaKotlin",
             briefDescription = "Prohibits usages of `android.widget.Toast`",
-            explanation = "Usages of `android.widget.Toast` are prohibited.",
+            explanation = "Usages of `android.widget.Toast` are prohibited",
             category = Category.CORRECTNESS,
             severity = Severity.ERROR,
             implementation = Implementation(

@@ -66,7 +66,7 @@ class DeprecatedPurpleColorXmlDetector : ResourceXmlDetector() {
             issue = ISSUE,
             scope = attribute,
             location = context.getValueLocation(attribute),
-            message = "The `@color/deprecated_purple` resource is deprecated and should not be used."
+            message = "`@color/deprecated_purple` should not be used."
         )
 
     }

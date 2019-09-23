@@ -50,7 +50,7 @@ class DeprecatedPurpleColorXmlDetectorTest : LintDetectorTest() {
             ).run()
             .expect(
                 """
-res/layout/layout.xml:5: Error: The @color/deprecated_purple resource is deprecated and should not be used. [DeprecatedPurpleColorXml]
+res/layout/layout.xml:5: Error: @color/deprecated_purple should not be used. [DeprecatedPurpleColorXml]
     android:background="@color/deprecated_purple"
                         ~~~~~~~~~~~~~~~~~~~~~~~~
 1 errors, 0 warnings
