@@ -6,11 +6,11 @@ This is a simple demo repo that shows how to configure and write custom lint che
 
 Custom lint checks are a great way to prohibit usages of certain classes and resources in a codebase. To demonstrate their power, this project contains the following custom lint checks:
 
+* [`AndroidToastJavaKotlinDetector`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/checks/src/main/java/com/lyft/android/lint/checks/AndroidToastJavaKotlinDetector.kt) - Prohibits usage of the Android `Toast` class in Java and Kotlin code and suggests using a `Snackbar` from the support library instead.
 * [`DeprecatedButtonXmlDetector`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/checks/src/main/java/com/lyft/android/lint/checks/DeprecatedButtonXmlDetector.kt) - Prohibits usages of a hypothetical `DeprecatedButton` class in layout XML resource files.
 * [`DeprecatedButtonJavaKotlinDetector`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/checks/src/main/java/com/lyft/android/lint/checks/DeprecatedButtonJavaKotlinDetector.kt) - Prohibits instantiations of a hypothetical `DeprecatedButton` class in Java and Kotlin code.
 * [`DeprecatedPurpleColorXmlDetector`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/checks/src/main/java/com/lyft/android/lint/checks/DeprecatedPurpleColorXmlDetector.kt) - Prohibits references to a hypothetical `@color/deprecated_purple` resource in layout XML resource files.
 * [`DeprecatedPurpleColorJavaKotlinDetector`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/checks/src/main/java/com/lyft/android/lint/checks/DeprecatedPurpleColorJavaKotlinDetector.kt) - Prohibits references to a hypothetical `R.color.deprecated_purple` resource in Java and Kotlin code.
-* [`AndroidToastJavaKotlinDetector`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/checks/src/main/java/com/lyft/android/lint/checks/AndroidToastJavaKotlinDetector.kt) - Prohibits usage of the Android `Toast` class in Java and Kotlin code and suggests using a `Snackbar` from the support library instead.
 
 You can see the lint checks show up as errors if you open this project in Android Studio and look at the [`MainActivity.kt`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/app/src/main/java/com/lyft/android/app/MainActivity.kt) and [`activity_main.xml`](https://github.com/alexjlockwood/android-lint-checks-demo/blob/master/app/src/main/res/layout/activity_main.xml) files.
 
