@@ -11,7 +11,7 @@ class HardcodedHexColorXmlDetector : ResourceXmlDetector() {
         val ISSUE = Issue.create(
             id = "HardcodedHexColorXml",
             briefDescription = "Prohibits hardcoded hex colors in layout XML",
-            explanation = "Hex colors should be declared in a `<color>` resource",
+            explanation = "Hex colors should be declared in a <color> resource",
             category = Category.CORRECTNESS,
             severity = Severity.ERROR,
             implementation = Implementation(
