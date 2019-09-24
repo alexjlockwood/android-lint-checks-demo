@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showToast() {
-        // LINT ERROR: the `android.widget.Toast` class should not be used!
-        Toast.makeText(this, "Some random text", Toast.LENGTH_SHORT).show()
+        // LINT ERROR: the `android.widget.Toast` class should not be used
+        Toast.makeText(this, "Some text", Toast.LENGTH_SHORT).show()
     }
 }

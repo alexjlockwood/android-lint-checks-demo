@@ -2,7 +2,7 @@
 
     <string name="app_name">Android Lint Checks Demo</string>
 
-    <!-- LINT ERROR: 'Okay' should be spelled 'OK'! -->
+    <!-- LINT ERROR: 'Okay' should be spelled 'OK' -->
     <string name="ok">Okay</string>
 
 </resources>

@@ -8,7 +8,7 @@
     tools:context="com.lyft.android.app.MainActivity"
     tools:ignore="HardcodedText" >
 
-    <!-- LINT ERROR: This TextView should not use a hardcoded hex color (`#f00`). -->
+    <!-- LINT ERROR: TextView shouldn't use a custom hex color (`#f00`). -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
