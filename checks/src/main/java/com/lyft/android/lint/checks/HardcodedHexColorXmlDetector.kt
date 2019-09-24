@@ -20,7 +20,6 @@ class HardcodedHexColorXmlDetector : ResourceXmlDetector() {
             )
         )
     }
-
 }
 
 
