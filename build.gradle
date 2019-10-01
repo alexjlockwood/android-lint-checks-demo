@@ -1,5 +1,4 @@
-buildscript { 
-    ext.kotlin_version = '1.3.50'
+buildscript {
 
     repositories {
         apply from: 'dependencies.gradle'
@@ -10,7 +9,7 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:$versions.gradlePluginVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" }
+    }
 }
 
 allprojects {
