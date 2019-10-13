@@ -1,6 +1,7 @@
 apply plugin: 'kotlin'
 
 dependencies {
+    versions.lint = getLintVersion()
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
     compileOnly "com.android.tools.lint:lint-api:$versions.lint"
     compileOnly "com.android.tools.lint:lint-checks:$versions.lint"
@@ -14,4 +15,22 @@ jar {
     manifest {
         attributes("Lint-Registry-v2": "com.lyft.android.lint.checks.IssueRegistry")
     }
+}
+
+def getLintVersion() {
+    Set<ResolvedDependency> dependencies = rootProject.buildscript.configurations.classpath.resolvedConfiguration.firstLevelModuleDependencies
+    for (ResolvedDependency dependency : dependencies) {
+        if (dependency.name.contains("com.android.tools.build:gradle")) {
+            // Note that the lint version is dependent on the gradle plugin version.
+            // If the Gradle plugin version is X.Y.Z, then the lint version is (X+23).Y.Z.
+            String androidGradleVersion = dependency.getModuleVersion()
+            String[] versionInfo = androidGradleVersion.split("\\.")
+            String xVersion = versionInfo[0]
+            String yVersion = versionInfo[1]
+            String zVersion = versionInfo[2]
+            xVersion = String.valueOf(Integer.valueOf(xVersion) + 23)
+            return xVersion + "." + yVersion + "." + zVersion
+        }
+    }
+    throw new RuntimeException("Android gradle plugin not found ")
 }
