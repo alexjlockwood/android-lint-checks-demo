@@ -2,8 +2,8 @@ ext.versions = [
 
         // Note that the lint version is dependent on the gradle plugin version.
         // If the Gradle plugin version is X.Y.Z, then the lint version is (X+23).Y.Z.
-        gradlePluginVersion: '3.5.0',
-        lint               : '26.5.0',
-        kotlin             : '1.3.50',
+        gradlePluginVersion: '3.5.2',
+        lint               : '26.5.2',
+        kotlin             : '1.3.60',
 
 ]
