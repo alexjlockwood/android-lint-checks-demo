@@ -1,5 +1,4 @@
 buildscript {
-
     repositories {
         apply from: 'dependencies.gradle'
         google()
